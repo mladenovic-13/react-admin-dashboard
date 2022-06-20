@@ -1,8 +1,9 @@
+export declare module "styled-components";
+
 // Styled Components Types
-interface StyledProps {
+interface ITheme {
   theme: Theme;
 }
-
 export interface Theme {
   color: {
     "100": string;
