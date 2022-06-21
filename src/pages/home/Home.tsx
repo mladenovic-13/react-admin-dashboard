@@ -1,3 +1,4 @@
+import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { HomeContainer, HomeWrapper, SidebarWrapper } from "./style";
 
@@ -7,7 +8,9 @@ const Home = () => {
       <SidebarWrapper>
         <Sidebar />
       </SidebarWrapper>
-      <HomeContainer>Home container</HomeContainer>
+      <HomeContainer>
+        <Navbar />
+      </HomeContainer>
     </HomeWrapper>
   );
 };

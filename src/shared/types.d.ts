@@ -1,5 +1,3 @@
-export declare module "styled-components";
-
 // Styled Components Types
 interface ITheme {
   theme: Theme;

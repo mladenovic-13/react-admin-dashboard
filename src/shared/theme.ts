@@ -1,4 +1,4 @@
-import { Theme } from "../styled-components";
+import { Theme } from "./types";
 
 export const theme: Theme = {
   color: {

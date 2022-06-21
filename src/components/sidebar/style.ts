@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ITheme } from "../../styled-components";
+import { ITheme } from "../../shared/types";
 
 export const SidebarContainer = styled.div`
   height: 100vh;
@@ -31,13 +31,14 @@ export const ListItem = styled.li`
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
   border-radius: 3px;
   cursor: pointer;
-  color: ${(p: ITheme) => p.theme.color[900]};
+  color: ${(p: ITheme) => p.theme.color[700]};
   .icon {
     font-size: 24px;
+    color: ${(p: ITheme) => p.theme.color[900]};
   }
 
   &:hover {
@@ -46,12 +47,12 @@ export const ListItem = styled.li`
 `;
 export const SidebarCenter = styled.div`
   width: 100%;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
   display: flex;
   justify-content: center;
   .itemGroupTitle {
     margin: 0;
-    padding-top: 24px;
+    padding-top: 20px;
     font-size: 12px;
     font-weight: 300;
     color: ${(p: ITheme) => p.theme.color[600]};
@@ -60,7 +61,7 @@ export const SidebarCenter = styled.div`
 export const SidebarBottom = styled.div`
   width: 100%;
   display: flex;
-  padding: 24px 0;
+  padding: 16px 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -104,7 +105,7 @@ export const SidebarBottom = styled.div`
 `;
 export const Credentials = styled.div`
   position: fixed;
-  bottom: 8px;
+  bottom: 4px;
   font-size: 12px;
   font-weight: 200;
   text-align: center;
