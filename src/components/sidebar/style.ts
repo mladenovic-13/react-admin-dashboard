@@ -6,7 +6,7 @@ export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid ${(p: ITheme) => p.theme.color[500]};
+  border-right: 1px solid ${(p: ITheme) => p.theme.color[400]};
   background-color: ${(p: ITheme) => p.theme.color[200]};
 `;
 export const SidebarTop = styled.div`
@@ -14,7 +14,7 @@ export const SidebarTop = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 0;
-  border-bottom: 1px solid ${(p: ITheme) => p.theme.color[500]};
+  border-bottom: 1px solid ${(p: ITheme) => p.theme.color[400]};
   .logo {
     font-size: 24px;
     font-weight: 700;
@@ -26,7 +26,7 @@ export const List = styled.ul`
   flex-direction: column;
 `;
 export const ListItem = styled.li`
-  padding: 4px;
+  padding: 4px 8px;
   list-style: none;
   display: flex;
   align-items: center;
@@ -66,7 +66,7 @@ export const SidebarBottom = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
-  border-top: 1px solid ${(p: ITheme) => p.theme.color[500]};
+  border-top: 1px solid ${(p: ITheme) => p.theme.color[400]};
 
   .toggleGroup {
     display: flex;
@@ -82,9 +82,9 @@ export const SidebarBottom = styled.div`
   .lightTheme {
     border: 1px solid ${(p: ITheme) => p.theme.color[600]};
     background-color: ${(p: ITheme) => p.theme.color[100]};
-  }
-  .lightTheme:hover {
-    background-color: ${(p: ITheme) => p.theme.color[300]};
+    &:hover {
+      background-color: ${(p: ITheme) => p.theme.color[300]};
+    }
   }
   .darkTheme {
     border: 1px solid ${(p: ITheme) => p.theme.color[900]};
@@ -93,10 +93,6 @@ export const SidebarBottom = styled.div`
       background-color: ${(p: ITheme) => p.theme.color[800]};
     }
   }
-  /* .darkTheme:hover {
-    border: 1px solid ${(p: ITheme) => p.theme.color[900]};
-    background-color: ${(p: ITheme) => p.theme.color[900]};
-  } */
   .itemGroupTitle {
     font-size: 16px;
     font-weight: 400;
