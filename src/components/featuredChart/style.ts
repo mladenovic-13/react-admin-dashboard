@@ -5,9 +5,8 @@ export const FeaturedChartContainer = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
-  padding: 12px 12px 38px 12px;
-  flex: 3;
-
+  flex: 2.5;
+  padding: 16px;
   color: rgba(0, 0, 0, 0.5);
 
   .heading {
@@ -55,13 +54,14 @@ export const FeaturedChartContainer = styled.div`
     .stats {
       display: flex;
       justify-content: space-between;
-      width: 80%;
+      width: 90%;
     }
     .statsItem {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 14px;
+      gap: 4px;
+      font-size: 10px;
     }
   }
 `;

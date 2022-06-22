@@ -25,9 +25,9 @@ const StatsContainer = styled.div<{ positive: boolean }>`
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 18px;
+  font-size: 16px;
   .arrow {
-    font-size: 24px;
+    font-size: 20px;
   }
 `;
 export default Stats;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ITheme } from "../../shared/types";
 
 export const NavbarWrapper = styled.div`
-  height: 52px;
+  height: 53px;
   display: flex;
   justify-content: center;
   align-items: center;
