@@ -3,7 +3,6 @@ import { ITheme } from "../../shared/types";
 
 export const NavbarWrapper = styled.div`
   height: 52px;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
