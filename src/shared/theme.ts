@@ -11,5 +11,6 @@ export const theme: Theme = {
     "700": "#0077B6",
     "800": "#023E8A",
     "900": "#03045E",
+    cardTitle: "rgba(0, 0, 0, 0.5);",
   },
 };

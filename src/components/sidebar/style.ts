@@ -7,7 +7,7 @@ export const SidebarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   border-right: 1px solid ${(p: ITheme) => p.theme.color[400]};
-  background-color: ${(p: ITheme) => p.theme.color[200]};
+  background-color: ${(p: ITheme) => p.theme.color[300]};
 `;
 export const SidebarTop = styled.div`
   width: 100%;
@@ -35,14 +35,14 @@ export const ListItem = styled.li`
   font-weight: 300;
   border-radius: 3px;
   cursor: pointer;
-  color: ${(p: ITheme) => p.theme.color[700]};
+  color: ${(p: ITheme) => p.theme.color[900]};
   .icon {
     font-size: 24px;
-    color: ${(p: ITheme) => p.theme.color[900]};
+    color: ${(p: ITheme) => p.theme.color[800]};
   }
 
   &:hover {
-    background-color: ${(p: ITheme) => p.theme.color[300]};
+    background-color: ${(p: ITheme) => p.theme.color[400]};
   }
 `;
 export const SidebarCenter = styled.div`
