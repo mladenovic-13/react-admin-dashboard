@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+VERCEL DEMO: https://admin-dashboard-two-ochre.vercel.app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
