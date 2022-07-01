@@ -19,18 +19,17 @@ export const NavbarWrapper = styled.div`
 
 export const HomeMainContent = styled.div`
   max-width: 1280px;
+  width: 100%;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  align-items: center;
 `;
 export const HomeMainContentWrapper = styled.div`
   background-color: ${(p: ITheme) => p.theme.color[100]};
   position: absolute;
 
-  /* TRICK TO CALS SCROLLBAR WIDTH */
+  /* TRICK TO CALC SCROLLBAR WIDTH */
   --scrollbar: calc(100vw - 100%);
   width: calc(100vw - 200px - var(--scrollbar));
 
@@ -38,4 +37,5 @@ export const HomeMainContentWrapper = styled.div`
   top: 52px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
