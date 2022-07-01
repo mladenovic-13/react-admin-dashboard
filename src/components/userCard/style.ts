@@ -3,10 +3,12 @@ import { ITheme } from "../../shared/types";
 
 export const Container = styled.div`
   position: relative;
+  height: 280px;
+  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  background-color: white;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  border: 1px solid ${(props: ITheme) => props.theme.color[400]};
   border-radius: 5px;
   padding: 16px;
   .name {
@@ -14,16 +16,17 @@ export const Container = styled.div`
     color: ${(props: ITheme) => props.theme.color[900]};
   }
   .cardTitle {
+    flex: 1;
     font-size: 16px;
     font-weight: 700;
     color: darkgray;
   }
   .wrapper {
+    flex: 5;
     display: flex;
     gap: 16px;
   }
   .imgWrapper {
-    padding: 10px;
     display: flex;
     align-items: center;
   }
@@ -31,11 +34,11 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4px;
-    justify-content: center;
+    justify-content: space-evenly;
   }
   .img {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 50%;
   }

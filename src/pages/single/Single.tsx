@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../../components/layout/Layout";
 import UserCard from "../../components/userCard/UserCard";
+import UserChart from "../../components/userChart/UserChart";
 import {
   BottomWrapper,
   TopLeftWrapper,
@@ -26,7 +27,9 @@ const Single = () => {
           <TopLeftWrapper>
             <UserCard user={user} />
           </TopLeftWrapper>
-          <TopRightWrapper>Top right</TopRightWrapper>
+          <TopRightWrapper>
+            <UserChart />
+          </TopRightWrapper>
         </TopWrapper>
         <BottomWrapper>Bottom</BottomWrapper>
       </Wrapper>

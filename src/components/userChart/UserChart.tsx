@@ -1,15 +1,15 @@
 import React from "react";
-import { ChartContainer } from "./style";
 import {
-  AreaChart,
   Area,
-  XAxis,
+  AreaChart,
   CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
 } from "recharts";
+import { ChartContainer } from "./style";
 
-const Chart = () => {
+const UserChart = () => {
   const data = [
     { name: "January", Total: 1200 },
     { name: "February", Total: 2100 },
@@ -21,8 +21,9 @@ const Chart = () => {
 
   return (
     <ChartContainer>
-      <div className="title">Last 6 months (Revenue)</div>
-      <ResponsiveContainer width={800}>
+      <h1 className="title">Last 6 Months</h1>
+
+      <ResponsiveContainer width={700} height="100%">
         <AreaChart data={data}>
           <defs>
             <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
@@ -46,4 +47,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default UserChart;
