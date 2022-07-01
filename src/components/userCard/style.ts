@@ -16,15 +16,15 @@ export const Container = styled.div`
     color: ${(props: ITheme) => props.theme.color[900]};
   }
   .cardTitle {
-    flex: 1;
-    font-size: 16px;
-    font-weight: 700;
-    color: darkgray;
+    color: ${(p: ITheme) => p.theme.color.cardTitle};
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 16px;
   }
   .wrapper {
     flex: 5;
     display: flex;
-    gap: 16px;
+    justify-content: space-around;
   }
   .imgWrapper {
     display: flex;

@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../../components/layout/Layout";
+import TableList from "../../components/table/Table";
 import UserCard from "../../components/userCard/UserCard";
 import UserChart from "../../components/userChart/UserChart";
 import {
@@ -31,7 +32,10 @@ const Single = () => {
             <UserChart />
           </TopRightWrapper>
         </TopWrapper>
-        <BottomWrapper>Bottom</BottomWrapper>
+        <BottomWrapper>
+          <h1 className="tableTitle">Last Transactions</h1>
+          <TableList />
+        </BottomWrapper>
       </Wrapper>
     </Layout>
   );

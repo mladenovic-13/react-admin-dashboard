@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ITheme } from "../../shared/types";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -13,7 +14,23 @@ export const TopWrapper = styled.div`
   gap: 20px;
 `;
 export const BottomWrapper = styled.div`
-  width: 100%;
+  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  .table {
+    height: 400px;
+  }
+  .tableTitle {
+    color: ${(p: ITheme) => p.theme.color.cardTitle};
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
 `;
-export const TopLeftWrapper = styled.div``;
+
+export const TopLeftWrapper = styled.div`
+  flex: 1;
+`;
 export const TopRightWrapper = styled.div``;
