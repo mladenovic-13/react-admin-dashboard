@@ -5,8 +5,8 @@ export const ChartContainer = styled.div`
   width: fit-content;
   height: 280px;
   flex: 5;
-  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
+  box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
   background-color: ${(p: ITheme) => p.theme.color.background};
   border-radius: 5px;
   padding: 16px;

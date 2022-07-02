@@ -4,8 +4,8 @@ import { ITheme } from "../../shared/types";
 export const Container = styled.div`
   position: relative;
   height: 280px;
-  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
+  box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
   background-color: ${(p: ITheme) => p.theme.color.background};
   display: flex;
   flex-direction: column;

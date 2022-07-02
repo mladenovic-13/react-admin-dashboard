@@ -14,8 +14,8 @@ export const TopWrapper = styled.div`
   gap: 20px;
 `;
 export const BottomWrapper = styled.div`
-  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
+  box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
   border-radius: 5px;
   background-color: ${(p: ITheme) => p.theme.color.background};
   padding: 20px;

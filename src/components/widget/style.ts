@@ -9,8 +9,8 @@ export const WidgetContainer = styled.div`
   background-color: ${(p: ITheme) => p.theme.color.background};
   color: ${(p: ITheme) => p.theme.color[900]};
   border-radius: 5px;
-  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
+  box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
   .left {
     display: flex;
     flex-direction: column;
