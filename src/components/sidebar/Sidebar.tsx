@@ -20,12 +20,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <SidebarContainer>
       <SidebarTop>
-        <div className="logo">{"<adminPanel />"}</div>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <div className="logo">{"<adminPanel />"}</div>
+        </Link>
       </SidebarTop>
       <SidebarCenter>
         <List>
@@ -35,14 +38,18 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </ListItem>
           <h2 className="itemGroupTitle">LISTS</h2>
-          <ListItem>
-            <PersonOutlineIcon className="icon" />
-            <span>Users</span>
-          </ListItem>
-          <ListItem>
-            <CategoryIcon className="icon" />
-            <span>Products</span>
-          </ListItem>
+          <Link to="/users" style={{ textDecoration: "none" }}>
+            <ListItem>
+              <PersonOutlineIcon className="icon" />
+              <span>Users</span>
+            </ListItem>
+          </Link>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <ListItem>
+              <CategoryIcon className="icon" />
+              <span>Products</span>
+            </ListItem>
+          </Link>
           <ListItem>
             <BallotIcon className="icon" />
             <span>Orders</span>

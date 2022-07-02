@@ -37,13 +37,14 @@ export const Left = styled.div`
   }
 `;
 export const Right = styled.div`
-  flex: 2;
+  flex: 3;
   display: flex;
 `;
 export const UserForm = styled.form`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 36px;
   .file {
     width: 40%;
     display: flex;

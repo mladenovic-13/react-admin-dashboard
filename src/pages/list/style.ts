@@ -1,13 +1,16 @@
 import styled from "styled-components";
-
-export const DataGridWrapper = styled.div`
+import { ITheme } from "../../shared/types";
+const Card = styled.div`
+  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border-radius: 5px;
+`;
+export const DataGridWrapper = styled(Card)`
   width: 100%;
 `;
 export const DataGridContainer = styled.div`
-  width: 980px;
-  min-width: fit-content;
   height: 400px;
-  background-color: white;
 `;
 export const Status = styled.div<{ status: "pending" | "active" | "passive" }>`
   padding: 3px 5px;
@@ -42,5 +45,28 @@ export const ActionContainer = styled.div`
   }
   .deleteBtn {
     color: rgb(173, 26, 26);
+  }
+`;
+export const AddUser = styled(Card)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  .title {
+    text-align: center;
+    font-size: 20px;
+    padding: 12px;
+    font-weight: 500;
+    color: ${(props: ITheme) => props.theme.color[900]};
+  }
+  .add {
+    font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid ${(props: ITheme) => props.theme.color[900]};
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    background: white;
+    color: ${(props: ITheme) => props.theme.color[900]};
   }
 `;

@@ -2,7 +2,13 @@ import React from "react";
 import Layout from "../../components/layout/Layout";
 import { DataGrid, GridValueGetterParams } from "@mui/x-data-grid";
 import { rows, columns } from "../../util/usersTableData";
-import { ActionContainer, DataGridContainer, DataGridWrapper } from "./style";
+import {
+  ActionContainer,
+  AddUser,
+  DataGridContainer,
+  DataGridWrapper,
+} from "./style";
+import { Link } from "react-router-dom";
 
 const List = () => {
   const actions = [
@@ -13,7 +19,9 @@ const List = () => {
       renderCell: (params: GridValueGetterParams) => {
         return (
           <ActionContainer>
-            <button className="btn viewBtn">View</button>
+            <Link to="/users/123" style={{ textDecoration: "none" }}>
+              <button className="btn viewBtn">View</button>
+            </Link>
             <button className="btn deleteBtn">Delete</button>
           </ActionContainer>
         );
@@ -23,9 +31,16 @@ const List = () => {
 
   return (
     <Layout>
+      <AddUser>
+        <h1 className="title">Add New User</h1>
+        <Link to="/users/new" style={{ textDecoration: "none" }}>
+          <button className="add">Add User</button>
+        </Link>
+      </AddUser>
       <DataGridWrapper>
         <DataGridContainer>
           <DataGrid
+            style={{ backgroundColor: "white" }}
             rows={rows}
             columns={columns.concat(actions)}
             pageSize={5}
