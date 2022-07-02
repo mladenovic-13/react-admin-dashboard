@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import { ITheme } from "../../shared/types";
 
 export const TableWrapper = styled.div`
   padding: 0px 20px 20px 20px;
+  .table {
+    background-color: ${(p: ITheme) => p.theme.color.background};
+  }
   .tableCell {
+    color: ${(p: ITheme) => p.theme.color[900]};
     text-align: center;
     font-size: 14px;
   }

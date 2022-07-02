@@ -4,8 +4,9 @@ import { ITheme } from "../../shared/types";
 const Card = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color.background};
   border-radius: 5px;
+  color: ${(props: ITheme) => props.theme.color[900]};
 `;
 
 export const Container = styled(Card)`
@@ -18,7 +19,7 @@ export const HeaderTitle = styled(Card)`
   font-size: 26px;
   padding: 12px;
   font-weight: 700;
-  color: ${(props: ITheme) => props.theme.color[400]};
+  color: ${(props: ITheme) => props.theme.color[800]};
 `;
 export const Left = styled.div`
   flex: 1;
@@ -33,7 +34,7 @@ export const Left = styled.div`
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    background-color: ${(p: ITheme) => p.theme.color[100]};
+    background-color: ${(p: ITheme) => p.theme.color[200]};
   }
 `;
 export const Right = styled.div`
@@ -75,10 +76,10 @@ export const UserForm = styled.form`
     padding: 6px;
     border: none;
     border-radius: 3px;
-    color: white;
+    color: ${(p: ITheme) => p.theme.color.background};
     font-size: 18px;
     font-weight: 700;
-    background-color: ${(p: ITheme) => p.theme.color[600]};
+    background-color: ${(p: ITheme) => p.theme.color[800]};
     cursor: pointer;
   }
 `;

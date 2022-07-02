@@ -6,7 +6,7 @@ export const WidgetContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color.background};
   color: ${(p: ITheme) => p.theme.color[900]};
   border-radius: 5px;
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
@@ -18,7 +18,7 @@ export const WidgetContainer = styled.div`
     .title {
       font-size: 16px;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.5);
+      color: ${(p: ITheme) => p.theme.color.cardTitle};
     }
     .value {
       font-weight: 400;

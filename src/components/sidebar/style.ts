@@ -7,7 +7,7 @@ export const SidebarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   border-right: 1px solid ${(p: ITheme) => p.theme.color[400]};
-  background-color: ${(p: ITheme) => p.theme.color[300]};
+  background-color: ${(p: ITheme) => p.theme.color.background};
 `;
 export const SidebarTop = styled.div`
   width: 100%;

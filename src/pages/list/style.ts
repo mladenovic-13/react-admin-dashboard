@@ -3,10 +3,11 @@ import { ITheme } from "../../shared/types";
 const Card = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color.background};
   border-radius: 5px;
 `;
 export const DataGridWrapper = styled(Card)`
+  margin-bottom: 300px;
   width: 100%;
 `;
 export const DataGridContainer = styled.div`
@@ -66,7 +67,7 @@ export const AddUser = styled(Card)`
     border-radius: 3px;
     cursor: pointer;
     outline: none;
-    background: white;
+    background: ${(props: ITheme) => props.theme.color.background};
     color: ${(props: ITheme) => props.theme.color[900]};
   }
 `;

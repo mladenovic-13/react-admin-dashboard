@@ -17,7 +17,7 @@ export const BottomWrapper = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color.background};
   padding: 20px;
   .table {
     height: 400px;

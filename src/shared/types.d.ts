@@ -14,5 +14,7 @@ export interface Theme {
     "800": string;
     "900": string;
     cardTitle: string;
+    background: string;
+    textColor: string;
   };
 }

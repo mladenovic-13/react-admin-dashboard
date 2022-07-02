@@ -16,7 +16,7 @@ export const ListWrapper = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   display: flex;
-  background: white;
+  background: ${(p: ITheme) => p.theme.color.background};
   flex-direction: column;
   width: 100%;
   gap: 20px;

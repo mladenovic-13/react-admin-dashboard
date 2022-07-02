@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ITheme } from "../../shared/types";
 
 export const NavbarWrapper = styled.div`
-  height: 52px;
+  height: 53px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,10 +19,12 @@ export const NavbarSearch = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1px 0 8px;
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color[200]};
   border: 1px solid ${(p: ITheme) => p.theme.color[500]};
   border-radius: 3px;
   .searchInput {
+    background-color: ${(p: ITheme) => p.theme.color[200]};
+    color: ${(p: ITheme) => p.theme.color[100]};
     border: none;
     outline: none;
   }

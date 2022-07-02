@@ -13,8 +13,7 @@ export const NavbarWrapper = styled.div`
   position: fixed;
   left: 200px;
   z-index: 999;
-  background-color: white;
-  background-color: ${(p: ITheme) => p.theme.color[100]};
+  background-color: ${(p: ITheme) => p.theme.color.background};
 `;
 
 export const HomeMainContent = styled.div`
@@ -26,7 +25,7 @@ export const HomeMainContent = styled.div`
   gap: 20px;
 `;
 export const HomeMainContentWrapper = styled.div`
-  background-color: ${(p: ITheme) => p.theme.color[100]};
+  background-color: ${(p: ITheme) => p.theme.color[200]};
   position: absolute;
 
   /* TRICK TO CALC SCROLLBAR WIDTH */

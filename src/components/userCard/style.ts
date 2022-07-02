@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 280px;
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color.background};
   display: flex;
   flex-direction: column;
   border-radius: 5px;

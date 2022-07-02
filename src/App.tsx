@@ -1,7 +1,7 @@
 import React from "react";
 import GlobalStyle from "./shared/globalStyles";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./shared/theme";
+import { lightTheme, darkTheme } from "./shared/theme";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -12,7 +12,7 @@ import { formProductInput, formUserInputs } from "./util/formDataSource";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
       <Router>
         <Routes>

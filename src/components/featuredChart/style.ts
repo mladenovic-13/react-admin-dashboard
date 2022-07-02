@@ -4,11 +4,11 @@ import { ITheme } from "../../shared/types";
 export const FeaturedChartContainer = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.5);
-  background: white;
+  background: ${(p: ITheme) => p.theme.color.background};
   border-radius: 5px;
   flex: 2.5;
   padding: 16px;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${(p: ITheme) => p.theme.color.cardTitle};
 
   .heading {
     display: flex;
