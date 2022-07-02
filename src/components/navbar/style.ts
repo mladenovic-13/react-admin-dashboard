@@ -1,3 +1,4 @@
+import { Theme } from "../../shared/types";
 import styled from "styled-components";
 import { ITheme } from "../../shared/types";
 
@@ -47,7 +48,18 @@ export const NavbarItems = styled.div`
     font-size: 14px;
   }
 `;
-export const NavbarItem = styled.div`
+
+interface INavbarItemProps {
+  theme: Theme;
+  isDarkMode?: boolean;
+  onClick?: () => void;
+  children: React.ReactNode;
+}
+export const NavbarItem = styled.div<INavbarItemProps>`
+  // BACKROUND COLOR IS SAME AS HOVER BACKGROUND
+  // BECAUSE DARK MODE IS ACTIVATED
+  background-color: ${(p: INavbarItemProps) =>
+    p.isDarkMode ? p.theme.color[300] : ""};
   position: relative;
   display: flex;
   height: 100%;

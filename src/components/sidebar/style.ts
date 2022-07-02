@@ -80,17 +80,17 @@ export const SidebarBottom = styled.div`
     cursor: pointer;
   }
   .lightTheme {
-    border: 1px solid ${(p: ITheme) => p.theme.color[600]};
-    background-color: ${(p: ITheme) => p.theme.color[100]};
+    border: 1px solid #0096c7;
+    background-color: #caf0f8;
     &:hover {
-      background-color: ${(p: ITheme) => p.theme.color[300]};
+      background-color: #90e0ef;
     }
   }
   .darkTheme {
-    border: 1px solid ${(p: ITheme) => p.theme.color[900]};
-    background-color: ${(p: ITheme) => p.theme.color[900]};
+    border: 1px solid #023e8a;
+    background-color: #023e8a;
     &:hover {
-      background-color: ${(p: ITheme) => p.theme.color[800]};
+      background-color: #0077b6;
     }
   }
   .itemGroupTitle {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Credentials,
   List,
@@ -21,8 +21,11 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import { Link } from "react-router-dom";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Sidebar = () => {
+  const { dispatch } = useContext(DarkModeContext);
+
   return (
     <SidebarContainer>
       <SidebarTop>
@@ -94,8 +97,18 @@ const Sidebar = () => {
       <SidebarBottom>
         <h2 className="itemGroupTitle">Toggle Theme</h2>
         <div className="toggleGroup">
-          <div className="box lightTheme"></div>
-          <div className="box darkTheme"></div>
+          <div
+            className="box lightTheme"
+            onClick={() => {
+              if (dispatch) dispatch({ type: "LIGHT" });
+            }}
+          ></div>
+          <div
+            onClick={() => {
+              if (dispatch) dispatch({ type: "DARK" });
+            }}
+            className="box darkTheme"
+          ></div>
         </div>
       </SidebarBottom>
       <Credentials>
