@@ -1,7 +1,7 @@
 import { HTMLInputTypeAttribute } from "react";
 
 export interface FormDataSource {
-  id: number;
+  id: string;
   label: string;
   type: HTMLInputTypeAttribute;
   placeholder: string;
@@ -9,43 +9,43 @@ export interface FormDataSource {
 
 export const formUserInputs: FormDataSource[] = [
   {
-    id: 1,
+    id: "username",
     label: "Username",
     type: "text",
     placeholder: "john_doe",
   },
   {
-    id: 2,
+    id: "displayName",
     label: "Name and Surname",
     type: "text",
     placeholder: "John Doe",
   },
   {
-    id: 3,
+    id: "email",
     label: "Email",
     type: "email",
     placeholder: "john_doe@mail.com",
   },
   {
-    id: 4,
+    id: "phone",
     label: "Phone",
     type: "text",
     placeholder: "+380991234567",
   },
   {
-    id: 5,
+    id: "password",
     label: "Password",
     type: "password",
     placeholder: "********",
   },
   {
-    id: 6,
+    id: "address",
     label: "Address",
     type: "text",
     placeholder: "123 Main St",
   },
   {
-    id: 7,
+    id: "country",
     label: "Country",
     type: "text",
     placeholder: "United States",
@@ -54,31 +54,31 @@ export const formUserInputs: FormDataSource[] = [
 
 export const formProductInput: FormDataSource[] = [
   {
-    id: 1,
+    id: "title",
     label: "Title",
     type: "text",
     placeholder: "Apple Macbook Pro",
   },
   {
-    id: 2,
+    id: "description",
     label: "Description",
     type: "text",
     placeholder: "Description",
   },
   {
-    id: 3,
+    id: "category",
     label: "Category",
     type: "text",
     placeholder: "Computers",
   },
   {
-    id: 4,
+    id: "price",
     label: "Price",
     type: "text",
     placeholder: "100",
   },
   {
-    id: 5,
+    id: "stock",
     label: "Stock",
     type: "text",
     placeholder: "in stock",

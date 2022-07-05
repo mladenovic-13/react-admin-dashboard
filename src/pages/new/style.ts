@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { ITheme } from "../../shared/types";
+import styled, { css } from "styled-components";
+import { ITheme, Theme } from "../../shared/types";
+import { IUploadStatus } from "./New";
 
 const Card = styled.div`
   -webkit-box-shadow: 5px 5px 15px -3px ${(p: ITheme) => p.theme.color[300]};
@@ -82,4 +83,24 @@ export const UserForm = styled.form`
     background-color: ${(p: ITheme) => p.theme.color[800]};
     cursor: pointer;
   }
+`;
+
+interface ISubmitButtonProps {
+  theme: Theme;
+  uploadStatus?: IUploadStatus;
+}
+export const SubmitButton = styled.button<ISubmitButtonProps>`
+  padding: 8px 24px;
+  border: none;
+  border-radius: 3px;
+  color: ${(p: ITheme) => p.theme.color.background};
+  font-size: 18px;
+  font-weight: 700;
+  background-color: ${(p: ITheme) => p.theme.color[800]};
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${(p: ITheme) => p.theme.color[500]};
+  }
+  /* ${(props) => (props.uploadStatus === "UPLOADED" ? css`` : css``)} */
 `;
