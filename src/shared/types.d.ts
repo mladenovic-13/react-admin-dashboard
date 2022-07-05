@@ -18,3 +18,15 @@ export interface Theme {
     textColor: string;
   };
 }
+
+// User type
+export interface IUser {
+  id: string;
+  username: string;
+  displayName: string;
+  email: string;
+  address: string;
+  phone: string;
+  img: string;
+  country: string;
+}

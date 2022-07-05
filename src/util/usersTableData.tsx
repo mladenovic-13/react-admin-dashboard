@@ -1,12 +1,11 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { Status } from "../pages/list/style";
 
 export const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 50 },
+  { field: "id", headerName: "ID", width: 160 },
   {
-    field: "user",
-    headerName: "User",
-    width: 230,
+    field: "displayName",
+    headerName: "Display Name",
+    width: 180,
     renderCell: (params: GridValueGetterParams) => {
       return (
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -20,87 +19,33 @@ export const columns: GridColDef[] = [
             src={params.row.img}
             alt={params.row.user}
           />
-          <p>{params.row.username}</p>
+          <p>{params.row.displayName}</p>
         </div>
       );
     },
   },
 
   {
+    field: "username",
+    headerName: "Username",
+    width: 130,
+  },
+  {
     field: "email",
     headerName: "Email",
-    width: 230,
+    width: 200,
   },
   {
-    field: "status",
-    headerName: "Status",
+    field: "phone",
+    headerName: "Phone",
     width: 130,
+  },
+  {
+    field: "address",
+    headerName: "Address",
+    width: 170,
     renderCell: (params: GridValueGetterParams) => {
-      return <Status status={params.row.status}>{params.row.status}</Status>;
+      return <span>{`${params.row.address}, ${params.row.country}`}</span>;
     },
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    width: 100,
-  },
-];
-
-export const rows = [
-  {
-    id: 1,
-    username: "Snow",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "pending",
-    age: 32,
-  },
-  {
-    id: 2,
-    username: "Nikola",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "active",
-    age: 32,
-  },
-  {
-    id: 3,
-    username: "Lazar",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "passive",
-    age: 32,
-  },
-  {
-    id: 4,
-    username: "Milos",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "active",
-    age: 12,
-  },
-  {
-    id: 5,
-    username: "Dusan",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "pending",
-    age: 32,
-  },
-  {
-    id: 6,
-    username: "Snow",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "passive",
-    age: 32,
-  },
-  {
-    id: 7,
-    username: "Snow",
-    img: "https://picsum.photos/200",
-    email: "nikolanik999@gmail.com",
-    status: "pending",
-    age: 32,
   },
 ];
