@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import { DataGrid, GridValueGetterParams } from "@mui/x-data-grid";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { columns } from "../../util/usersTableData";
 import {
   ActionContainer,
@@ -34,7 +34,14 @@ const List = () => {
   }, []);
 
   // Handle deleting user from db
-  const handleDelete = () => {};
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteDoc(doc(db, "users", id));
+      setUsers(users.filter((item) => item.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const actions = [
     {
@@ -47,7 +54,10 @@ const List = () => {
             <Link to="/users/123" style={{ textDecoration: "none" }}>
               <button className="btn viewBtn">View</button>
             </Link>
-            <button onClick={handleDelete} className="btn deleteBtn">
+            <button
+              onClick={() => handleDelete(params.row.id)}
+              className="btn deleteBtn"
+            >
               Delete
             </button>
           </ActionContainer>

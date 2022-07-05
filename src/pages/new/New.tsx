@@ -8,6 +8,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
 import { auth, db, storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   userInputs: FormDataSource[];
@@ -24,6 +25,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
     password?: string;
     img?: string;
   }>({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (file) {
@@ -60,7 +62,10 @@ const New: React.FC<Props> = ({ userInputs }) => {
     }
 
     try {
-      if (createRes) setDoc(doc(db, "users", createRes.user.uid), data);
+      if (createRes) {
+        setDoc(doc(db, "users", createRes.user.uid), data);
+        navigate(-1);
+      }
     } catch (error) {
       console.error("Error adding document: ", error);
     }

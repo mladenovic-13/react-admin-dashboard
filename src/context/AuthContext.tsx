@@ -3,7 +3,8 @@ import AuthReducer from "./AuthReducer";
 import { IAuthContext } from "./type";
 
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user") || "") || null,
+  // @ts-ignore
+  user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
 export const AuthContext = createContext<IAuthContext>(INITIAL_STATE);
