@@ -1,4 +1,5 @@
 import React from "react";
+import { IAction, IDarkModeContext } from "./type";
 
 const DarkModeReducer: React.Reducer<IDarkModeContext, IAction> = (
   state,

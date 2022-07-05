@@ -1,18 +1,33 @@
 import GlobalStyle from "./shared/globalStyles";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { formProductInput, formUserInputs } from "./util/formDataSource";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { darkTheme, lightTheme } from "./shared/theme";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { isDarkMode } = useContext(DarkModeContext);
+
+  // Authentication
+  const { user } = useContext(AuthContext);
+  interface AuthProps {
+    children: JSX.Element;
+  }
+  const RequireAuth: React.FC<AuthProps> = ({ children }) => {
+    return user ? children : <Navigate to="/login" />;
+  };
 
   return (
     // THEME PROVIDER FOR THEME SWITCHING
@@ -22,16 +37,58 @@ function App() {
       <Router>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <Home />
+                </RequireAuth>
+              }
+            />
             <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route path="new" element={<New userInputs={formUserInputs} />} />
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":userId"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <New userInputs={formUserInputs} />
+                  </RequireAuth>
+                }
+              />
             </Route>
             <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":productId"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
               <Route
                 path="new"
                 element={<New userInputs={formProductInput} />}

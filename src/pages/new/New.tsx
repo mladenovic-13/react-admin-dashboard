@@ -4,6 +4,8 @@ import Layout from "../../components/layout/Layout";
 import { FormDataSource } from "../../util/formDataSource";
 import { Left, Right } from "./style";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 interface Props {
   userInputs: FormDataSource[];
@@ -15,6 +17,21 @@ const New: React.FC<Props> = ({ userInputs }) => {
   useEffect(() => {
     console.log(file?.name);
   }, [file]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        first: "Ada",
+        last: "Lovelace",
+        born: 1815,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
 
   return (
     <Layout>
@@ -32,7 +49,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
           />
         </Left>
         <Right>
-          <UserForm>
+          <UserForm onSubmit={handleSubmit}>
             <div className="file">
               <p className="inputTitle">Upload Image:</p>
               <label htmlFor="file">
@@ -45,6 +62,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
                   ? setFile(e.target.files[0])
                   : setFile(null);
               }}
+              name="img"
               style={{ display: "none" }}
               type="file"
               id="file"

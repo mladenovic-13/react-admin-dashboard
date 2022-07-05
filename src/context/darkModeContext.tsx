@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import DarkModeReducer from "./darkModeReducer";
+import { IDarkModeContext } from "./type";
 
 const INITAIL_STATE = {
   isDarkMode: false,
