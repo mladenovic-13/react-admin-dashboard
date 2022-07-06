@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import { DataGrid, GridValueGetterParams } from "@mui/x-data-grid";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 import { columns } from "../../util/usersTableData";
 import {
   ActionContainer,
@@ -9,40 +8,26 @@ import {
   DataGridContainer,
   DataGridWrapper,
 } from "./style";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { db } from "../../firebase";
-import { IUser } from "../../shared/types";
+import { useData } from "../../hooks/useData";
 
 const List = () => {
-  const [users, setUsers] = useState<IUser[]>([]);
-
-  // Fetch users from Firebase DB
-  useEffect(() => {
-    const fetchUsers = async () => {
-      let userArray: IUser[] = [];
-      try {
-        const res = await getDocs(collection(db, "users"));
-        res.forEach((doc) =>
-          userArray.push({ id: doc.id, ...doc.data() } as IUser)
-        );
-        setUsers(userArray);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchUsers();
-  }, []);
-
+  const location = useLocation();
+  // change content on different path
+  const type = location.pathname === "/users" ? "User" : "Product";
+  // Custom Hook for fathing data
+  // by collection type from Firebase
+  const data = useData(type);
   // Handle deleting user from db
   const handleDelete = async (id: string) => {
     try {
       await deleteDoc(doc(db, "users", id));
-      setUsers(users.filter((item) => item.id !== id));
     } catch (err) {
       console.log(err);
     }
   };
-
+  // Generic table fields
   const actions = [
     {
       field: "action",
@@ -69,16 +54,20 @@ const List = () => {
   return (
     <Layout>
       <AddUser>
-        <h1 className="title">Add New User</h1>
-        <Link to="/users/new" style={{ textDecoration: "none" }}>
-          <button className="add">Add User</button>
+        <h1 className="title">Add New {type}</h1>
+        <Link
+          to={`${location.pathname}/new`}
+          state={{ type }}
+          style={{ textDecoration: "none" }}
+        >
+          <button className="add">Add {type}</button>
         </Link>
       </AddUser>
       <DataGridWrapper>
         <DataGridContainer>
           <DataGrid
             style={{ backgroundColor: "white" }}
-            rows={users}
+            rows={data}
             columns={columns.concat(actions)}
             pageSize={5}
             rowsPerPageOptions={[5]}

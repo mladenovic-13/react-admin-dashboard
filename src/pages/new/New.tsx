@@ -4,11 +4,12 @@ import Layout from "../../components/layout/Layout";
 import { FormDataSource } from "../../util/formDataSource";
 import { Left, Right } from "./style";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
 import { auth, db, storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import { useAppLocation } from "../../hooks/useAppLocation";
 
 interface Props {
   userInputs: FormDataSource[];
@@ -26,6 +27,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
     img?: string;
   }>({});
   const navigate = useNavigate();
+  const location = useAppLocation();
 
   useEffect(() => {
     if (file) {
@@ -43,7 +45,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
   }, [file]);
 
   // handle form submiting
-  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
+  const handleUserSubmit = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
 
     let createRes: UserCredential | null = null;
@@ -66,6 +68,17 @@ const New: React.FC<Props> = ({ userInputs }) => {
         setDoc(doc(db, "users", createRes.user.uid), data);
         navigate(-1);
       }
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
+  };
+  // handle form submiting
+  const handleProductSubmit = async (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    try {
+      await addDoc(collection(db, "products"), data);
+      navigate(-1);
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -108,7 +121,13 @@ const New: React.FC<Props> = ({ userInputs }) => {
         </Left>
         <Right>
           {/* Input form */}
-          <UserForm onSubmit={handleSubmit}>
+          <UserForm
+            onSubmit={(e) =>
+              location.state.type === "User"
+                ? handleUserSubmit(e)
+                : handleProductSubmit(e)
+            }
+          >
             <div className="file">
               <p className="inputTitle">Upload Image:</p>
               <label htmlFor="file">

@@ -30,3 +30,12 @@ export interface IUser {
   img: string;
   country: string;
 }
+// Product type
+export interface IProduct {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  stock: string;
+  price: string;
+}
