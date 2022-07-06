@@ -37,12 +37,14 @@ const List = () => {
       renderCell: (params: GridValueGetterParams) => {
         return (
           <ActionContainer>
-            <Link
-              to={`${location.pathname}/${params.row.id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <button className="btn viewBtn">View</button>
-            </Link>
+            {type === "User" && (
+              <Link
+                to={`${location.pathname}/${params.row.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <button className="btn viewBtn">View</button>
+              </Link>
+            )}
             <button
               onClick={() => handleDelete(params.row.id)}
               className="btn deleteBtn"

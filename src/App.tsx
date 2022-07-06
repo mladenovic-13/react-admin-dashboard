@@ -11,7 +11,11 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import { formProductInput, formUserInputs } from "./util/formDataSource";
+import {
+  formOrderInput,
+  formProductInput,
+  formUserInputs,
+} from "./util/formDataSource";
 import React, { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { darkTheme, lightTheme } from "./shared/theme";
@@ -115,7 +119,7 @@ function App() {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New userInputs={formUserInputs} />
+                    <New userInputs={formOrderInput} />
                   </RequireAuth>
                 }
               />

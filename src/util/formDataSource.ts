@@ -84,3 +84,29 @@ export const formProductInput: FormDataSource[] = [
     placeholder: "in stock",
   },
 ];
+export const formOrderInput: FormDataSource[] = [
+  {
+    id: "product",
+    label: "Product",
+    type: "text",
+    placeholder: "Apple Macbook Pro",
+  },
+  {
+    id: "amount",
+    label: "Amount",
+    type: "number",
+    placeholder: "",
+  },
+  {
+    id: "method",
+    label: "Payment Method",
+    type: "text",
+    placeholder: "",
+  },
+  {
+    id: "status",
+    label: "Status",
+    type: "text",
+    placeholder: "",
+  },
+];
