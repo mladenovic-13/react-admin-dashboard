@@ -48,7 +48,7 @@ const TableList = () => {
                   <Status status={row.status}>{row.status}</Status>
                 </TableCell> */}
                 {Object.entries(row).map((cell) => (
-                  <TableCell className="tableCell">
+                  <TableCell key={cell[0]} className="tableCell">
                     {cell[0] === "img" ? (
                       <img src={row.img} alt="" className="img" />
                     ) : cell[0] === "status" ? (

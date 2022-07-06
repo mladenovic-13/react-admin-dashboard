@@ -13,7 +13,6 @@ export const Wrapper = styled(Card)`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
     width: 36px;
     height: 36px;
     border-radius: 5px;
@@ -28,8 +27,32 @@ export const Wrapper = styled(Card)`
 `;
 export const OrderForm = styled.form`
   width: 30%;
-  input,
-  select {
+
+  select,
+  input {
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid ${(p: ITheme) => p.theme.color[800]};
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    outline: none;
+  }
+  .buttonWrapper {
+    display: flex;
     width: 100%;
+    justify-content: center;
+  }
+  label {
+    width: 100%;
+  }
+  .select {
+    width: 100%;
+  }
+  .input {
+    width: 30%;
+  }
+  .inputTitle {
+    font-weight: 200;
   }
 `;

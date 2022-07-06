@@ -1,5 +1,5 @@
 import { Container, HeaderTitle, SubmitButton, UserForm } from "./style";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import { FormDataSource } from "../../util/formDataSource";
 import { Left, Right } from "./style";
@@ -85,7 +85,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
   };
 
   //handle image upload
-  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
       setUploadStatus("UPLOADING");
@@ -95,7 +95,7 @@ const New: React.FC<Props> = ({ userInputs }) => {
   };
 
   // handle form inputs
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const id = e.target.id;
     const value = e.target.value;
 
