@@ -28,9 +28,6 @@ export const Status = styled.div<{ status: string }>`
   padding: 3px 0;
   border-radius: 5px;
   background-color: ${(props) =>
-    props.status === "Pending"
-      ? "rgb(80, 235, 23, 0.2)"
-      : "rgb(58, 143, 43, 0.2)"};
-  color: ${(props) =>
-    props.status === "Pending" ? "rgb(125, 168, 5)" : "rgb(29, 87, 19)"};
+    props.status === "Pending" ? "#eded72" : "#88b572"};
+  color: ${(props) => (props.status === "Pending" ? "#8a6603" : "#2e6308")};
 `;

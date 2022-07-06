@@ -1,11 +1,11 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
-export const usersColumns: GridColDef[] = [
+export const productsColumns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 160 },
   {
-    field: "displayName",
-    headerName: "Display Name",
-    width: 180,
+    field: "title",
+    headerName: "Title",
+    width: 200,
     renderCell: (params: GridValueGetterParams) => {
       return (
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -17,35 +17,38 @@ export const usersColumns: GridColDef[] = [
               objectFit: "cover",
             }}
             src={params.row.img}
-            alt={params.row.user}
+            alt={params.row.title}
           />
-          <p>{params.row.displayName}</p>
+          <p>{params.row.title}</p>
         </div>
       );
     },
   },
 
   {
-    field: "username",
-    headerName: "Username",
-    width: 130,
-  },
-  {
-    field: "email",
-    headerName: "Email",
+    field: "description",
+    headerName: "Description",
     width: 200,
   },
   {
-    field: "phone",
-    headerName: "Phone",
-    width: 130,
+    field: "category",
+    headerName: "Category",
+    width: 140,
   },
   {
-    field: "address",
-    headerName: "Address",
-    width: 170,
+    field: "price",
+    headerName: "Price",
+    width: 100,
     renderCell: (params: GridValueGetterParams) => {
-      return <span>{`${params.row.address}, ${params.row.country}`}</span>;
+      return <span>{`$ ${params.row.price}`}</span>;
+    },
+  },
+  {
+    field: "stock",
+    headerName: "Stock",
+    width: 140,
+    renderCell: (params: GridValueGetterParams) => {
+      return <span>{`${params.row.stock} pieces`}</span>;
     },
   },
 ];

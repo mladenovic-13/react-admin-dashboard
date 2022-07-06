@@ -1,7 +1,7 @@
 import Layout from "../../components/layout/Layout";
 import { DataGrid, GridValueGetterParams } from "@mui/x-data-grid";
 import { deleteDoc, doc } from "firebase/firestore";
-import { columns } from "../../util/usersTableData";
+import { usersColumns } from "../../util/usersTableData";
 import {
   ActionContainer,
   AddUser,
@@ -11,6 +11,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { db } from "../../firebase";
 import { useData } from "../../hooks/useData";
+import { productsColumns } from "../../util/productsTableData";
 
 const List = () => {
   const location = useLocation();
@@ -36,7 +37,10 @@ const List = () => {
       renderCell: (params: GridValueGetterParams) => {
         return (
           <ActionContainer>
-            <Link to="/users/123" style={{ textDecoration: "none" }}>
+            <Link
+              to={`${location.pathname}/${params.row.id}`}
+              style={{ textDecoration: "none" }}
+            >
               <button className="btn viewBtn">View</button>
             </Link>
             <button
@@ -68,7 +72,11 @@ const List = () => {
           <DataGrid
             style={{ backgroundColor: "white" }}
             rows={data}
-            columns={columns.concat(actions)}
+            columns={
+              type === "User"
+                ? usersColumns.concat(actions)
+                : productsColumns.concat(actions)
+            }
             pageSize={5}
             rowsPerPageOptions={[5]}
             checkboxSelection

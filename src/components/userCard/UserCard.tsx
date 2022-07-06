@@ -1,15 +1,9 @@
 import React from "react";
+import { IUser } from "../../shared/types";
 import { Container } from "./style";
 
 interface Props {
-  user: {
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    country: string;
-    img: string;
-  };
+  user: IUser;
 }
 
 const UserCard: React.FC<Props> = ({ user }) => {
@@ -21,7 +15,7 @@ const UserCard: React.FC<Props> = ({ user }) => {
           <img className="img" src={user.img} alt="User" />
         </div>
         <div className="infoWrapper">
-          <h1 className="name">{user.name}</h1>
+          <h1 className="name">{user.displayName}</h1>
           <div className="info">
             <p className="type">Email:</p>
             <p className="text">{user.email}</p>

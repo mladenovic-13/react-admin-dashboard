@@ -23,7 +23,7 @@ const UserChart = () => {
     <ChartContainer>
       <h1 className="title">Last 6 Months</h1>
 
-      <ResponsiveContainer width={700} height="100%">
+      <ResponsiveContainer width={600} height="100%">
         <AreaChart data={data}>
           <defs>
             <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">

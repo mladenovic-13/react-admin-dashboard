@@ -56,7 +56,7 @@ function App() {
                 }
               />
               <Route
-                path=":userId"
+                path=":id"
                 element={
                   <RequireAuth>
                     <Single />
@@ -82,7 +82,7 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":id"
                 element={
                   <RequireAuth>
                     <Single />
@@ -92,6 +92,32 @@ function App() {
               <Route
                 path="new"
                 element={<New userInputs={formProductInput} />}
+              />
+            </Route>
+            <Route path="orders">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <New userInputs={formUserInputs} />
+                  </RequireAuth>
+                }
               />
             </Route>
           </Route>

@@ -21,6 +21,7 @@ const TableList = () => {
           <TableHead>
             <TableRow>
               <TableCell className="tableCell">Tracking ID</TableCell>
+              <TableCell className="tableCell"></TableCell>
               <TableCell className="tableCell">Product</TableCell>
               <TableCell className="tableCell">Customer</TableCell>
               <TableCell className="tableCell">Date</TableCell>
@@ -32,7 +33,7 @@ const TableList = () => {
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id}>
-                <TableCell className="tableCell">{row.id}</TableCell>
+                {/* <TableCell className="tableCell">{row.id}</TableCell>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
                     <img src={row.img} alt="" className="img" />
@@ -45,7 +46,18 @@ const TableList = () => {
                 <TableCell className="tableCell">{row.method}</TableCell>
                 <TableCell className="tableCell">
                   <Status status={row.status}>{row.status}</Status>
-                </TableCell>
+                </TableCell> */}
+                {Object.entries(row).map((cell) => (
+                  <TableCell className="tableCell">
+                    {cell[0] === "img" ? (
+                      <img src={row.img} alt="" className="img" />
+                    ) : cell[0] === "status" ? (
+                      <Status status={row.status}>{row.status}</Status>
+                    ) : (
+                      cell[1]
+                    )}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>

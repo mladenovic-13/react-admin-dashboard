@@ -36,10 +36,12 @@ const Sidebar = () => {
       <SidebarCenter>
         <List>
           <h2 className="itemGroupTitle">MAIN</h2>
-          <ListItem>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </ListItem>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <ListItem>
+              <DashboardIcon className="icon" />
+              <span>Dashboard</span>
+            </ListItem>
+          </Link>
           <h2 className="itemGroupTitle">LISTS</h2>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <ListItem>
@@ -53,10 +55,12 @@ const Sidebar = () => {
               <span>Products</span>
             </ListItem>
           </Link>
-          <ListItem>
-            <BallotIcon className="icon" />
-            <span>Orders</span>
-          </ListItem>
+          <Link to="/orders" style={{ textDecoration: "none" }}>
+            <ListItem>
+              <BallotIcon className="icon" />
+              <span>Orders</span>
+            </ListItem>
+          </Link>
           <ListItem>
             <DeliveryDiningIcon className="icon" />
             <span>Delivery</span>
