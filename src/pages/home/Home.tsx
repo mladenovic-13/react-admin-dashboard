@@ -1,6 +1,5 @@
 import Widget from "../../components/widget/Widget";
 import { ChartsWrapper, ListWrapper, WidgetsContainer } from "./style";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
@@ -8,27 +7,21 @@ import FeaturedChart from "../../components/featuredChart/FeaturedChart";
 import Chart from "../../components/chart/Chart";
 import TableList from "../../components/table/Table";
 import Layout from "../../components/layout/Layout";
+import { useUserWidget } from "../../hooks/useUserWidget";
+import { useEffect } from "react";
 
 const Home = () => {
+  const usersWidgetData = useUserWidget();
+
+  useEffect(() => {
+    console.log(usersWidgetData);
+  }, [usersWidgetData]);
+
   return (
     <Layout>
       {/* WIDGETS */}
       <WidgetsContainer>
-        <Widget
-          type="USERS"
-          value={"93"}
-          linkTitle={"See all users"}
-          stats={{ value: 22, positive: true }}
-          icon={
-            <PersonOutlineIcon
-              sx={{
-                backgroundColor: "rgb(76, 196, 55, 0.6)",
-                borderRadius: "5px;",
-                padding: "3px",
-              }}
-            />
-          }
-        />
+        <Widget {...usersWidgetData} />
         <Widget
           type="ORDERS"
           value={"451"}

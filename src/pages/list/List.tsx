@@ -1,5 +1,5 @@
 import Layout from "../../components/layout/Layout";
-import { DataGrid, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { deleteDoc, doc } from "firebase/firestore";
 import { usersColumns } from "../../util/usersTableData";
 import {
@@ -12,11 +12,19 @@ import { Link, useLocation } from "react-router-dom";
 import { db } from "../../firebase";
 import { useData } from "../../hooks/useData";
 import { productsColumns } from "../../util/productsTableData";
+import { ordersColumns } from "../../util/ordersTableData";
+
+type ListType = "User" | "Product" | "Order";
 
 const List = () => {
   const location = useLocation();
   // change content on different path
-  const type = location.pathname === "/users" ? "User" : "Product";
+  const type: ListType =
+    location.pathname === "/users"
+      ? "User"
+      : location.pathname === "/products"
+      ? "Product"
+      : "Order";
   // Custom Hook for fathing data
   // by collection type from Firebase
   const data = useData(type);
@@ -29,7 +37,7 @@ const List = () => {
     }
   };
   // Generic table fields
-  const actions = [
+  const actions: GridColDef[] = [
     {
       field: "action",
       headerName: "Action",
@@ -77,7 +85,9 @@ const List = () => {
             columns={
               type === "User"
                 ? usersColumns.concat(actions)
-                : productsColumns.concat(actions)
+                : type === "Product"
+                ? productsColumns.concat(actions)
+                : ordersColumns
             }
             pageSize={5}
             rowsPerPageOptions={[5]}

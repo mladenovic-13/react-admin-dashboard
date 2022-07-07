@@ -39,3 +39,27 @@ export interface IProduct {
   stock: string;
   price: string;
 }
+// Order type
+export interface IOreder {
+  id: string;
+  product: string;
+  amount: number;
+  method: string;
+  status: string;
+  userID: string;
+}
+
+// Widget types
+export type WidgetType = "USERS" | "ORDERS" | "EARNINGS" | "BALANCE";
+
+// Widget Data Type
+export interface IWidgetData {
+  type: WidgetType;
+  value: string;
+  linkTitle: string;
+  icon: React.ReactNode;
+  stats: {
+    value: number;
+    positive: boolean;
+  };
+}

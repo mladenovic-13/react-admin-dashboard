@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { WidgetContainer } from "./style";
-import { WidgetProps } from "./types";
 import Stats from "../stats/Stats";
+import { IWidgetData } from "../../shared/types";
 
-const Widget: React.FC<WidgetProps> = ({
+const Widget: React.FC<IWidgetData> = ({
   type,
   value,
   linkTitle,

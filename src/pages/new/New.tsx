@@ -25,7 +25,10 @@ const New: React.FC<Props> = ({ userInputs }) => {
     email?: string;
     password?: string;
     img?: string;
-  }>({});
+    timeStamp?: Date;
+  }>({
+    timeStamp: new Date(),
+  });
   const navigate = useNavigate();
   const location = useAppLocation();
 

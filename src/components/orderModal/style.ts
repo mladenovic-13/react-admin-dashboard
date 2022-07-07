@@ -3,11 +3,12 @@ import { Card } from "../../pages/list/style";
 import { ITheme } from "../../shared/types";
 
 export const Wrapper = styled(Card)`
+  color: ${(p: ITheme) => p.theme.color[900]};
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: ${(p: ITheme) => p.theme.color.background};
   padding: 40px;
   .close {
     display: flex;
@@ -21,7 +22,7 @@ export const Wrapper = styled(Card)`
     top: 16px;
     right: 20px;
     .closeIcon {
-      color: white;
+      color: ${(p: ITheme) => p.theme.color[100]};
     }
   }
 `;
@@ -30,7 +31,8 @@ export const OrderForm = styled.form`
 
   select,
   input {
-    background-color: inherit;
+    color: ${(p: ITheme) => p.theme.color.textColor};
+    background-color: ${(p: ITheme) => p.theme.color[200]};
     border: none;
     border-bottom: 1px solid ${(p: ITheme) => p.theme.color[800]};
     padding: 8px 10px;

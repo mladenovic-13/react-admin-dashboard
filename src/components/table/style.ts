@@ -25,7 +25,7 @@ export const TableWrapper = styled.div`
 `;
 
 export const Status = styled.div<{ status: string }>`
-  padding: 3px 0;
+  padding: 3px 6px;
   border-radius: 5px;
   background-color: ${(props) =>
     props.status === "Pending" ? "#eded72" : "#88b572"};

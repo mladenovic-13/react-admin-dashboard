@@ -20,7 +20,9 @@ const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
     method?: string;
     status?: string;
     userID: string;
+    timeStamp: Date;
   }>({
+    timeStamp: new Date(),
     userID: userID,
     method: "Cash",
     status: "Pending",
