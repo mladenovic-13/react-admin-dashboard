@@ -1,9 +1,9 @@
 import { collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { IOreder, IProduct, IUser } from "../shared/types";
+import { IOrder, IProduct, IUser } from "../shared/types";
 
-export type DataType = IUser[] | IProduct[] | IOreder[];
+export type DataType = IUser[] | IProduct[] | IOrder[];
 export type ListType = "User" | "Product" | "Order";
 
 // Custom hook that accepts type of Firebase collection
@@ -54,9 +54,9 @@ export const useData = (type: ListType) => {
       const unsubOrders = onSnapshot(
         collection(db, "orders"),
         (snapshot) => {
-          let dataArray: IOreder[] = [];
+          let dataArray: IOrder[] = [];
           snapshot.docs.forEach((doc) => {
-            dataArray.push({ id: doc.id, ...doc.data() } as IOreder);
+            dataArray.push({ id: doc.id, ...doc.data() } as IOrder);
           });
           setData(dataArray);
         },

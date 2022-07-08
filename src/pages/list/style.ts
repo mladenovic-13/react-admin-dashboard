@@ -11,7 +11,7 @@ export const DataGridWrapper = styled(Card)`
   width: 100%;
 `;
 export const DataGridContainer = styled.div`
-  height: 400px;
+  height: 600px;
 `;
 export const Status = styled.div<{ status: "pending" | "active" | "passive" }>`
   padding: 3px 5px;

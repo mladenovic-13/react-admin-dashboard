@@ -26,7 +26,7 @@ export const ordersColumns: GridColDef[] = [
   {
     field: "status",
     headerName: "Payment Status",
-    width: 160,
+    width: 130,
     renderCell: (params: GridValueGetterParams) => {
       return <Status status={params.row.status}>{params.row.status}</Status>;
     },

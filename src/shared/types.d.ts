@@ -37,16 +37,18 @@ export interface IProduct {
   description: string;
   category: string;
   stock: string;
-  price: string;
+  price: number;
+  total: number;
 }
 // Order type
-export interface IOreder {
+export interface IOrder {
   id: string;
   product: string;
   amount: number;
   method: string;
   status: string;
   userID: string;
+  total: number;
 }
 
 // Widget types

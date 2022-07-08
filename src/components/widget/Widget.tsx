@@ -15,7 +15,11 @@ const Widget: React.FC<IWidgetData> = ({
     <WidgetContainer>
       <div className="left">
         <h1 className="title">{type}</h1>
-        <h1 className="value">{value}</h1>
+        {type === "BALANCE" || type === "EARNINGS" ? (
+          <h1 className="value">$ {value}</h1>
+        ) : (
+          <h1 className="value">{value}</h1>
+        )}
         <Link className="link" to={"/"}>
           {linkTitle}
         </Link>

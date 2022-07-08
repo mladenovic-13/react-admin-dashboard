@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { OrderForm, Wrapper } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import { useData } from "../../hooks/useData";
@@ -14,12 +14,14 @@ interface IProps {
 
 const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
   const products = useData("Product") as IProduct[];
+  const [currentProduct, setCurrentProduct] = useState({} as IProduct);
   const [orderData, setOrderData] = useState<{
     product?: string;
-    amount?: number;
-    method?: string;
-    status?: string;
+    amount: number;
+    method: string;
+    status: string;
     userID: string;
+    total: number;
     timeStamp: Date;
   }>({
     timeStamp: new Date(),
@@ -27,6 +29,7 @@ const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
     method: "Cash",
     status: "Pending",
     amount: 1,
+    total: 0,
   });
 
   const handleSelect = (
@@ -38,11 +41,27 @@ const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
     setOrderData({ ...orderData, [id]: value });
   };
 
+  useEffect(() => {
+    const total = orderData.amount * currentProduct.price;
+    console.log(total);
+    setOrderData({ ...orderData, total });
+  }, [orderData.amount, currentProduct.price]);
+
+  const handleProductSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const product = products[e.target.selectedIndex - 1];
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setCurrentProduct(product);
+    setOrderData({ ...orderData, [id]: value });
+  };
+
   const handleNewOrder = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     setOrderData({ ...orderData });
     try {
       await addDoc(collection(db, "orders"), orderData);
+      setOpenModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +75,7 @@ const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
       <OrderForm onSubmit={handleNewOrder}>
         <label htmlFor="product">Product:</label>
         <select
-          onChange={handleSelect}
+          onChange={handleProductSelect}
           className="select"
           name="product"
           id="product"
@@ -82,7 +101,7 @@ const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
           id="amount"
         />
         <br />
-        <label htmlFor="product">Payment Method:</label>
+        <label htmlFor="method">Payment Method:</label>
         <select
           onChange={handleSelect}
           className="select"
@@ -105,6 +124,11 @@ const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
           <option value="Pending">Pending</option>
           <option value="Aproved">Aproved</option>
         </select>
+        {orderData.product && (
+          <div className="totalPrice">
+            Total Price: <h1 className="price">${orderData.total}</h1>
+          </div>
+        )}
         <div className="buttonWrapper">
           <SubmitButton style={{ marginTop: "16px" }} type="submit">
             ADD ORDER

@@ -57,4 +57,19 @@ export const OrderForm = styled.form`
   .inputTitle {
     font-weight: 200;
   }
+  .totalPrice {
+    padding: 8px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid ${(p: ITheme) => p.theme.color[800]};
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    h1 {
+      display: inline;
+      font-size: 24px;
+    }
+  }
 `;

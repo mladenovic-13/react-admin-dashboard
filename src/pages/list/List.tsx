@@ -67,16 +67,19 @@ const List = () => {
 
   return (
     <Layout>
-      <AddUser>
-        <h1 className="title">Add New {type}</h1>
-        <Link
-          to={`${location.pathname}/new`}
-          state={{ type }}
-          style={{ textDecoration: "none" }}
-        >
-          <button className="add">Add {type}</button>
-        </Link>
-      </AddUser>
+      {!(location.pathname === "/orders") && (
+        <AddUser>
+          <h1 className="title">Add New {type}</h1>
+          <Link
+            to={`${location.pathname}/new`}
+            state={{ type }}
+            style={{ textDecoration: "none" }}
+          >
+            <button className="add">Add {type}</button>
+          </Link>
+        </AddUser>
+      )}
+
       <DataGridWrapper>
         <DataGridContainer>
           <DataGrid
@@ -89,8 +92,8 @@ const List = () => {
                 ? productsColumns.concat(actions)
                 : ordersColumns
             }
-            pageSize={5}
-            rowsPerPageOptions={[5]}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
             checkboxSelection
           />
         </DataGridContainer>
