@@ -20,6 +20,7 @@ export const NavbarSearch = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1px 0 8px;
+  color: ${(p: ITheme) => p.theme.color[900]};
   background-color: ${(p: ITheme) => p.theme.color[100]};
   border: 1px solid ${(p: ITheme) => p.theme.color[500]};
   border-radius: 3px;

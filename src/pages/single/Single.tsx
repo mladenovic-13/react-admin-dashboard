@@ -6,7 +6,6 @@ import TableList from "../../components/table/Table";
 import UserCard from "../../components/userCard/UserCard";
 import UserChart from "../../components/userChart/UserChart";
 import { useAppLocation } from "../../hooks/useAppLocation";
-import { useUser } from "../../hooks/useUser";
 import { IUser } from "../../shared/types";
 import { AddUser } from "../list/style";
 import {

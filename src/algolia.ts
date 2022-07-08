@@ -20,6 +20,11 @@ export const setSearch = async () => {
     });
 
     await index.saveObjects(users);
+
+    // Searching users by username and displayName
+    await index.setSettings({
+      searchableAttributes: ["username", "displayName"],
+    });
   } catch (error) {
     console.log(error);
   }
