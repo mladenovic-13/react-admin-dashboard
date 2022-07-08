@@ -5,7 +5,9 @@ import NewOrderModal from "../../components/orderModal/NewOrderModal";
 import TableList from "../../components/table/Table";
 import UserCard from "../../components/userCard/UserCard";
 import UserChart from "../../components/userChart/UserChart";
+import { useAppLocation } from "../../hooks/useAppLocation";
 import { useUser } from "../../hooks/useUser";
+import { IUser } from "../../shared/types";
 import { AddUser } from "../list/style";
 import {
   BottomWrapper,
@@ -22,7 +24,7 @@ const Single = () => {
   const params = useParams();
   params.id ? (id = params.id) : console.log("No ID atribute!");
   // Custom hook for fatching user from DB
-  const user = useUser(id);
+  const user = useAppLocation().state as IUser;
 
   return (
     <Layout>

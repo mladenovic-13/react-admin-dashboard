@@ -28,6 +28,7 @@ const List = () => {
   // Custom Hook for fathing data
   // by collection type from Firebase
   const data = useData(type);
+
   // Handle deleting user from db
   const handleDelete = async (id: string) => {
     try {
@@ -48,6 +49,7 @@ const List = () => {
             {type === "User" && (
               <Link
                 to={`${location.pathname}/${params.row.id}`}
+                state={{ ...params.row }}
                 style={{ textDecoration: "none" }}
               >
                 <button className="btn viewBtn">View</button>

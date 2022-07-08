@@ -20,6 +20,7 @@ import React, { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { darkTheme, lightTheme } from "./shared/theme";
 import { AuthContext } from "./context/AuthContext";
+import { setSearch } from "./algolia";
 
 function App() {
   const { isDarkMode } = useContext(DarkModeContext);
@@ -32,6 +33,9 @@ function App() {
   const RequireAuth: React.FC<AuthProps> = ({ children }) => {
     return user ? children : <Navigate to="/login" />;
   };
+
+  // Set search data
+  setSearch();
 
   return (
     // THEME PROVIDER FOR THEME SWITCHING

@@ -1,6 +1,6 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
+import { usersCollection } from "../firebase";
 import { IWidgetData } from "../shared/types";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
@@ -33,12 +33,12 @@ export const useUserWidget = (): IWidgetData => {
       const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
 
       const lastMonthQuery = query(
-        collection(db, "users"),
+        usersCollection,
         where("timeStamp", "<=", today),
         where("timeStamp", ">", lastMonth)
       );
       const prevMonthQuery = query(
-        collection(db, "users"),
+        usersCollection,
         where("timeStamp", "<=", lastMonth),
         where("timeStamp", ">", prevMonth)
       );

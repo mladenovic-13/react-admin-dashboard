@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   NavbarContainer,
   NavbarItem,
@@ -13,16 +13,30 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
+import { index } from "../../algolia";
 
 const Navbar = () => {
   const { isDarkMode, dispatch } = useContext(DarkModeContext);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const hanldeSearch = async () => {
+    const res = await index.search(searchQuery);
+    console.log(res.hits);
+  };
 
   return (
     <NavbarWrapper>
       <NavbarContainer>
         <NavbarSearch>
-          <input type="text" className="searchInput" placeholder="Search..." />
-          <SearchOutlinedIcon className="searchIcon navbarIcon " />
+          <input
+            onChange={(e) => setSearchQuery(e.target.value)}
+            type="text"
+            className="searchInput"
+            placeholder="Search..."
+          />
+          <div onClick={hanldeSearch} className="searchWrapper">
+            <SearchOutlinedIcon className="searchIcon navbarIcon " />
+          </div>
         </NavbarSearch>
         <NavbarItems>
           <NavbarItem
