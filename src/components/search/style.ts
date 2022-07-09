@@ -44,7 +44,6 @@ export const Results = styled.div`
   background-color: ${(p: ITheme) => p.theme.color.background};
   border: 1px solid ${(p: ITheme) => p.theme.color[300]};
   .item {
-    list-style: none;
     padding: 6px 16px;
     border-bottom: 1px solid ${(p: ITheme) => p.theme.color[300]};
     color: ${(p: ITheme) => p.theme.color[800]};

@@ -3,10 +3,11 @@ import { index } from "../../algolia";
 import { NavbarSearch, Results } from "./style";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { IUser } from "../../shared/types";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [results, setResults] = useState<any[]>();
+  const [results, setResults] = useState<any[]>([]);
 
   useEffect(() => {
     const searchItems = async () => {
@@ -33,13 +34,20 @@ const Search = () => {
       <div onClick={hanldeSearch} className="searchWrapper">
         <SearchOutlinedIcon className="searchIcon navbarIcon " />
       </div>
-      {searchQuery.length > 2 && (
+      {searchQuery.length > 2 && results?.length > 0 && (
         <Results>
           {results?.map((result: IUser) => (
-            <div className="item" key={result.username}>
-              <p className="display">{result.displayName}</p>
-              <p className="username">{result.username}</p>
-            </div>
+            <Link
+              key={result.username}
+              to="/"
+              state={{ result }}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="item">
+                <p className="display">{result.displayName}</p>
+                <p className="username">{result.username}</p>
+              </div>
+            </Link>
           ))}
         </Results>
       )}
