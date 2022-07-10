@@ -22,6 +22,7 @@ const Single = () => {
   const params = useParams();
   params.id ? (id = params.id) : console.log("No ID atribute!");
   // Custom hook for fatching user from DB
+
   const user = useUser(id);
 
   return (

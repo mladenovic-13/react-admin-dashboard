@@ -20,22 +20,30 @@ export const NavbarSearch = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1px 0 8px;
-  background-color: ${(p: ITheme) => p.theme.color[200]};
+  color: ${(p: ITheme) => p.theme.color[900]};
+  background-color: ${(p: ITheme) => p.theme.color[100]};
   border: 1px solid ${(p: ITheme) => p.theme.color[500]};
   border-radius: 3px;
-  .searchInput {
-    background-color: ${(p: ITheme) => p.theme.color[200]};
-    color: ${(p: ITheme) => p.theme.color[100]};
-    border: none;
-    outline: none;
-  }
-  .searchIcon {
+  .searchWrapper {
+    padding: 3px;
+    margin-right: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    padding: 4px;
     border-radius: 3px;
     &:hover {
       background-color: ${(p: ITheme) => p.theme.color[300]};
     }
+  }
+  input {
+    color: ${(p: ITheme) => p.theme.color[900]};
+  }
+  .searchInput {
+    font-size: 16px;
+    background-color: inherit;
+    border: none;
+    outline: none;
   }
 `;
 export const NavbarItems = styled.div`
@@ -44,7 +52,6 @@ export const NavbarItems = styled.div`
   align-items: center;
   gap: 8px;
   span {
-    color: ${(p: ITheme) => p.theme.color[800]};
     font-size: 14px;
   }
 `;

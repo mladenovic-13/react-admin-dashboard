@@ -3,16 +3,15 @@ import {
   NavbarContainer,
   NavbarItem,
   NavbarItems,
-  NavbarSearch,
   NavbarWrapper,
 } from "./style";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
+import Search from "../search/Search";
 
 const Navbar = () => {
   const { isDarkMode, dispatch } = useContext(DarkModeContext);
@@ -20,10 +19,7 @@ const Navbar = () => {
   return (
     <NavbarWrapper>
       <NavbarContainer>
-        <NavbarSearch>
-          <input type="text" className="searchInput" placeholder="Search..." />
-          <SearchOutlinedIcon className="searchIcon navbarIcon " />
-        </NavbarSearch>
+        <Search />
         <NavbarItems>
           <NavbarItem
             isDarkMode={isDarkMode}

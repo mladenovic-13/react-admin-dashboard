@@ -1,10 +1,14 @@
-import { collection, onSnapshot } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
+import {
+  ordersCollection,
+  productsCollection,
+  usersCollection,
+} from "../firebase";
 import { IOrder, IProduct, IUser } from "../shared/types";
 
-export type DataType = IUser[] | IProduct[] | IOrder[];
 export type ListType = "User" | "Product" | "Order";
+export type DataType = IUser[] | IProduct[] | IOrder[];
 
 // Custom hook that accepts type of Firebase collection
 // and returns data if success or null if failed
@@ -15,11 +19,11 @@ export const useData = (type: ListType) => {
     // LISTEN (REALTIME)
     if (type === "User") {
       const unsubUsers = onSnapshot(
-        collection(db, "users"),
+        usersCollection,
         (snapshot) => {
           let dataArray: IUser[] = [];
           snapshot.docs.forEach((doc) => {
-            dataArray.push({ id: doc.id, ...doc.data() } as IUser);
+            dataArray.push({ ...doc.data(), id: doc.id } as IUser);
           });
           setData(dataArray);
         },
@@ -33,11 +37,11 @@ export const useData = (type: ListType) => {
       };
     } else if (type === "Product") {
       const unsubProducts = onSnapshot(
-        collection(db, "products"),
+        productsCollection,
         (snapshot) => {
           let dataArray: IProduct[] = [];
           snapshot.docs.forEach((doc) => {
-            dataArray.push({ id: doc.id, ...doc.data() } as IProduct);
+            dataArray.push({ ...doc.data(), id: doc.id } as IProduct);
           });
           setData(dataArray);
         },
@@ -52,11 +56,11 @@ export const useData = (type: ListType) => {
       };
     } else if (type === "Order") {
       const unsubOrders = onSnapshot(
-        collection(db, "orders"),
+        ordersCollection,
         (snapshot) => {
           let dataArray: IOrder[] = [];
           snapshot.docs.forEach((doc) => {
-            dataArray.push({ id: doc.id, ...doc.data() } as IOrder);
+            dataArray.push({ ...doc.data(), id: doc.id } as IOrder);
           });
           setData(dataArray);
         },
