@@ -1,19 +1,23 @@
-import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
+import { getDocument } from "../api/data";
 import { IUser } from "../shared/types";
 
-export const useUser = (id: string): IUser => {
+export const useUser = (id: string) => {
   const [user, setUser] = useState<IUser>({} as IUser);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const docRef = doc(db, "users", id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) setUser(docSnap.data() as IUser);
-      else console.log("No such user!");
+    const fetchData = async () => {
+      try {
+        const res = await getDocument("users", id);
+        setUser(res);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
-    fetchUser();
+    fetchData();
   }, [id]);
 
-  return user;
+  return { loading, user };
 };
