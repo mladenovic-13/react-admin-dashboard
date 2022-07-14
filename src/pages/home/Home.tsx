@@ -8,28 +8,26 @@ import { useUserWidget } from "../../hooks/useUserWidget";
 import { useOrderWidget } from "../../hooks/useOrderWidget";
 import { useEarningsWidget } from "../../hooks/useEarningsWidget";
 import { useBalanceWidget } from "../../hooks/useBalanceWidget";
+import LoadingSpiner from "../../components/loadingSpiner/LoadingSpiner";
 
 const Home = () => {
-  const usersWidgetData = useUserWidget();
-  const ordersWidgetData = useOrderWidget();
-  const earningsWidgetData = useEarningsWidget();
-  const balanceWidgetData = useBalanceWidget();
+  const { loading: loadingUW, data: usersWidgetData } = useUserWidget();
+  const { loading: loadingOW, data: ordersWidgetData } = useOrderWidget();
+  const { loading: loadingEW, data: earningsWidgetData } = useEarningsWidget();
+  const { loading: loadingBW, data: balanceWidgetData } = useBalanceWidget();
 
   return (
     <Layout>
-      {/* WIDGETS */}
       <WidgetsContainer>
-        <Widget {...usersWidgetData} />
-        <Widget {...ordersWidgetData} />
-        <Widget {...earningsWidgetData} />
-        <Widget {...balanceWidgetData} />
+        {loadingUW ? <LoadingSpiner /> : <Widget {...usersWidgetData} />}
+        {loadingOW ? <LoadingSpiner /> : <Widget {...ordersWidgetData} />}
+        {loadingEW ? <LoadingSpiner /> : <Widget {...earningsWidgetData} />}
+        {loadingBW ? <LoadingSpiner /> : <Widget {...balanceWidgetData} />}
       </WidgetsContainer>
-      {/* CHARTS */}
       <ChartsWrapper>
         <FeaturedChart />
         <Chart />
       </ChartsWrapper>
-      {/* TABLE */}
       <ListWrapper>
         <div className="listTitle">Latest transactions</div>
         <TableList />

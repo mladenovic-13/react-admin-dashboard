@@ -27,8 +27,7 @@ const List = () => {
       : "Order";
   // Custom Hook for fathing data
   // by collection type from Firebase
-  const data = useData(type);
-
+  const { loading, data } = useData(type);
   // Handle deleting user from db
   const handleDelete = async (id: string) => {
     try {
@@ -84,20 +83,22 @@ const List = () => {
 
       <DataGridWrapper>
         <DataGridContainer>
-          <DataGrid
-            style={{ backgroundColor: "white" }}
-            rows={data}
-            columns={
-              type === "User"
-                ? usersColumns.concat(actions)
-                : type === "Product"
-                ? productsColumns.concat(actions)
-                : ordersColumns
-            }
-            pageSize={10}
-            rowsPerPageOptions={[10]}
-            checkboxSelection
-          />
+          {!loading && (
+            <DataGrid
+              style={{ backgroundColor: "white" }}
+              rows={data}
+              columns={
+                type === "User"
+                  ? usersColumns.concat(actions)
+                  : type === "Product"
+                  ? productsColumns.concat(actions)
+                  : ordersColumns
+              }
+              pageSize={10}
+              rowsPerPageOptions={[10]}
+              checkboxSelection
+            />
+          )}
         </DataGridContainer>
       </DataGridWrapper>
     </Layout>

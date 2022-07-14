@@ -1,10 +1,10 @@
-import { getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { ordersCollection } from "../firebase";
-import { IWidgetData } from "../shared/types";
+import { IWidgetData, IWidgetWrapper } from "../shared/types";
 import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
+import { getWidget } from "../api/data";
 
-export const useBalanceWidget = (): IWidgetData => {
+export const useBalanceWidget = (): IWidgetWrapper => {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<IWidgetData>({
     type: "BALANCE",
     value: "",
@@ -23,57 +23,17 @@ export const useBalanceWidget = (): IWidgetData => {
       />
     ),
   });
-  const [amount, setAmount] = useState(0);
-  const [diff, setDiff] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const today = new Date();
-      const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-      const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+    getWidget("balance").then(({ users, difference }) => {
+      setLoading(false);
+      setData((prev) => ({
+        ...prev,
+        value: users.toString(),
+        stats: { value: difference, positive: difference > 0 },
+      }));
+    });
+  }, []);
 
-      const lastMonthQuery = query(
-        ordersCollection,
-        where("timeStamp", "<=", today),
-        where("timeStamp", ">", lastMonth)
-      );
-      const prevMonthQuery = query(
-        ordersCollection,
-        where("timeStamp", "<=", lastMonth),
-        where("timeStamp", ">", prevMonth)
-      );
-
-      const allTimeData = await getDocs(ordersCollection);
-      const lastMonthData = await getDocs(lastMonthQuery);
-      const prevMonthData = await getDocs(prevMonthQuery);
-
-      let sum = 0;
-      let sumLast = 0;
-      let sumPrev = 0;
-
-      allTimeData.docs.forEach((doc) => {
-        sum += doc.data().total;
-      });
-      lastMonthData.docs.forEach((doc) => {
-        sumLast += doc.data().total;
-      });
-      prevMonthData.docs.forEach((doc) => {
-        sumPrev += doc.data().total;
-      });
-
-      setAmount(sum);
-      setDiff(Math.floor(((sumLast - sumPrev) / sumPrev) * 100));
-
-      setData({
-        ...data,
-        value: amount.toString(),
-        stats: { value: diff, positive: diff > 0 },
-      });
-    };
-
-    // Call fetch function
-    fetchData();
-  }, [amount]);
-
-  return data as IWidgetData;
+  return { loading, data } as IWidgetWrapper;
 };

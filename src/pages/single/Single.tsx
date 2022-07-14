@@ -19,10 +19,7 @@ import {
 const Single = () => {
   const [openModal, setOpenModal] = useState(false);
   const { id } = useParams();
-
   const { loading, user } = useUser(id as string);
-
-  // const user = useUser(id as string);
 
   return (
     <Layout>

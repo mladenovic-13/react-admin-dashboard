@@ -65,3 +65,8 @@ export interface IWidgetData {
     positive: boolean;
   };
 }
+
+export interface IWidgetWrapper {
+  data: IWidgetData;
+  loading: boolean;
+}

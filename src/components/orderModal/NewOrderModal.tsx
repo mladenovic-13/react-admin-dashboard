@@ -13,7 +13,8 @@ interface IProps {
 }
 
 const NewOrderModal = ({ setOpenModal, userID }: IProps) => {
-  const products = useData("Product") as IProduct[];
+  const { loading, data } = useData("Product");
+  const products = data as IProduct[];
   const [currentProduct, setCurrentProduct] = useState({} as IProduct);
   const [orderData, setOrderData] = useState<{
     product?: string;

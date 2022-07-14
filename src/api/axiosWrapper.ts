@@ -15,6 +15,20 @@ export const fetchData = async (collection: string, docID: string) => {
     throw new Error();
   }
 };
+export const fetchWidget = async (widgetType: string) => {
+  try {
+    const token = (await getToken()) as string;
+    const res = await axios.get(
+      `http://localhost:8000/api/widget/${widgetType}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    throw new Error();
+  }
+};
 
 // user.getIdToken cant be called in function
 // firebase thing

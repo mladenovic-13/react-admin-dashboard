@@ -19,10 +19,10 @@ const SpinnerKeyframes = keyframes`
   `;
 
 export const Spinner = styled.div`
-  width: 100px;
-  height: 100px;
-  border: 10px solid #f3f3f3;
-  border-top: 10px solid ${(p: ITheme) => p.theme.color[400]};
+  width: 80px;
+  height: 80px;
+  border: 4px solid inherit;
+  border-top: 4px solid ${(p: ITheme) => p.theme.color[300]};
   border-radius: 50%;
   animation-name: ${SpinnerKeyframes};
   animation-duration: 1s;

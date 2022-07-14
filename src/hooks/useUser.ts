@@ -10,7 +10,7 @@ export const useUser = (id: string) => {
     const fetchData = async () => {
       try {
         const res = await getDocument("users", id);
-        setUser(res);
+        setUser(res as IUser);
         setLoading(false);
       } catch (error) {
         console.log(error);
