@@ -29,6 +29,20 @@ export const fetchWidget = async (widgetType: string) => {
     throw new Error();
   }
 };
+export const fetchChart = async (chartName: string) => {
+  try {
+    const token = (await getToken()) as string;
+    const res = await axios.get(
+      `http://localhost:8000/api/chart/${chartName}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    throw new Error();
+  }
+};
 
 // user.getIdToken cant be called in function
 // firebase thing

@@ -1,5 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-import { fetchData, fetchWidget } from "./axiosWrapper";
+import { fetchChart, fetchData, fetchWidget } from "./axiosWrapper";
 
 // GET SINGLE DOCUMENT FROM FIREBASE
 export const getDocument = async (
@@ -18,7 +18,14 @@ export const getCollection = async (
   return res as Promise<DocumentData[]>;
 };
 
+// GET DATA FOR WIDGETS
 export const getWidget = async (type: string) => {
   const res = await fetchWidget(type);
+  return res;
+};
+
+// GET DATA FOR MAIN CHART
+export const getChartData = async () => {
+  const res = await fetchChart("six-months");
   return res;
 };
